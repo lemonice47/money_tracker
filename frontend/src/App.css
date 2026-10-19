@@ -1,0 +1,102 @@
+/* Layout and components. */
+.shell { min-height: 100vh; }
+
+.topbar {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 12px max(16px, calc((100% - 600px) / 2));
+  background: var(--paper); border-bottom: 1px solid var(--line);
+}
+.brand { font-family: var(--display); font-weight: 700; font-size: 1.1rem; }
+.brand.big { font-size: 1.5rem; }
+.topbar nav { display: flex; gap: 4px; flex: 1; }
+.topbar nav a { text-decoration: none; color: var(--muted); padding: 6px 10px; border-radius: 8px; font-weight: 500; }
+.topbar nav a.active { background: var(--accent-soft); color: var(--accent); }
+.topbar-user { display: flex; align-items: center; gap: 8px; }
+
+.content { max-width: 600px; margin: 0 auto; padding: 20px 16px 48px; }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.card-head, .page-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.page-header .actions { display: flex; gap: 8px; }
+.page-header input { width: auto; }
+
+.btn { border: 1px solid transparent; border-radius: 10px; padding: 9px 14px; font-weight: 600; background: none; }
+.btn.primary { background: var(--accent); color: var(--paper); }
+.btn.primary:disabled { opacity: 0.6; }
+.btn.ghost { border-color: var(--line); background: var(--paper); }
+.btn.danger { background: var(--out); color: var(--paper); }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+.error { background: var(--out-soft); color: var(--out); border-radius: 10px; padding: 10px 12px; font-size: 0.9rem; }
+.empty { color: var(--muted); font-size: 0.9rem; padding: 4px 0; }
+
+/* login / register */
+.auth-page { min-height: 100vh; display: grid; place-items: center; padding: 16px; }
+.auth-card { width: 100%; max-width: 380px; }
+.auth-card label, .form label { display: flex; flex-direction: column; gap: 4px; font-size: 0.88rem; font-weight: 500; }
+
+/* day navigation */
+.daybar { display: flex; align-items: center; gap: 8px; }
+.daybar .nav { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); font-size: 1.1rem; }
+.daybar .day { flex: 1; min-width: 0; text-align: center; }
+.daybar .day strong { display: block; font-family: var(--display); font-size: 1.15rem; }
+.daybar .day input { border: 0; background: transparent; color: var(--muted); font-size: 0.85rem; text-align: center; padding: 0; width: auto; }
+
+/* totals */
+.totals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.card.totals { display: grid; }
+.totals > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.totals .num { font-size: 1.05rem; overflow-wrap: anywhere; }
+
+/* add form */
+.add-form { display: flex; flex-direction: column; gap: 12px; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; background: var(--bg); border-radius: 10px; padding: 3px; }
+.seg button { border: 0; background: transparent; border-radius: 8px; padding: 8px; font-weight: 600; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--paper); box-shadow: 0 1px 2px rgb(0 0 0 / 0.12); }
+.seg button.out[aria-pressed="true"] { color: var(--out); }
+.seg button.in[aria-pressed="true"] { color: var(--in); }
+.amount-row { display: flex; align-items: center; gap: 8px; border-bottom: 2px solid var(--line); padding-bottom: 4px; }
+.amount-row:focus-within { border-color: var(--accent); }
+.amount-row .cur { font-family: var(--mono); color: var(--muted); }
+.amount-row input { flex: 1; min-width: 0; border: 0; background: transparent; font-family: var(--mono); font-size: 1.8rem; padding: 2px 0; outline: none; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 5px 12px; font-size: 0.85rem; }
+.chip[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+/* transaction list */
+.tx-list { list-style: none; margin: 0; padding: 0; }
+.tx { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); }
+.tx:first-child { border-top: 0; }
+.tag { font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--out-soft); color: var(--out); white-space: nowrap; }
+.tag.in { background: var(--accent-soft); color: var(--in); }
+.tx-text { min-width: 0; overflow-wrap: anywhere; }
+.tx-text small { display: block; color: var(--muted); font-size: 0.78rem; }
+.del { border: 0; background: transparent; color: var(--muted); font-size: 1.1rem; width: 30px; height: 30px; border-radius: 8px; }
+.del:hover { background: var(--bg); color: var(--out); }
+
+/* 14-day chart */
+.chart { display: grid; grid-template-columns: repeat(14, 1fr); gap: 4px; align-items: end; height: 120px; }
+.bar { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; border: 0; background: transparent; padding: 0; gap: 4px; min-width: 0; }
+.bar .fill { width: 100%; max-width: 22px; background: var(--out); opacity: 0.45; border-radius: 4px 4px 1px 1px; }
+.bar.sel .fill { opacity: 1; }
+.bar small { font-size: 0.65rem; color: var(--muted); font-family: var(--mono); }
+.bar.sel small { color: var(--ink); font-weight: 600; }
+
+/* month categories */
+.cats { display: flex; flex-direction: column; gap: 8px; }
+.cat-row { display: grid; grid-template-columns: 90px 1fr auto; gap: 10px; align-items: center; font-size: 0.88rem; }
+.cat-row .track { height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+.cat-row .track span { display: block; height: 100%; background: var(--out); border-radius: 4px; }
+
+/* history filters */
+.filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+.danger-zone h2 { color: var(--out); }
+
+@media (max-width: 440px) {
+  .topbar-user .small { display: none; }
+  .totals .num { font-size: 0.95rem; }
+  .cat-row { grid-template-columns: 74px 1fr auto; }
+  .filters { grid-template-columns: 1fr; }
+}
